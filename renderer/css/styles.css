@@ -1,0 +1,259 @@
+/******************************************************************************
+ * color palette
+ * plum color:    HEX= #ac015f | RGB= 172 1 95
+ * red color:     HEX= #9b1f2e | RGB: 155 31 46
+ * dark red:      HEX= #6b1f31 | RBG: 107 31 49
+ * light grn clr: HEX: #ecf0da | RGB 236 240 218
+ *
+*****************************************************************************/
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400');
+:root {
+  --color-cream: #f6eeda;
+  --color-highlight: #f29a8b;
+  --color-dark: #30333a;
+  --color-dark-alt: #5b616e;
+  --color-alt: #b48e57;
+
+  --p5-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.hide {
+  display: none;
+}
+
+/******************************************************************************
+ * 
+ * menu/navigation bar elements
+ * 
+ *****************************************************************************/
+.icon-img {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: var(--color-dark);
+
+}
+
+.icon-img:hover {
+  cursor: pointer;
+}
+
+.icon-img div {
+  width: 50%;
+  height: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.nav-home {
+  grid-area: nav-home;
+}
+
+.nav-settings {
+  grid-area: nav-settings;
+}
+
+.nav-about {
+  grid-area: nav-about;
+}
+
+.nav-drag {
+  grid-area: nav-drag;
+  color: var(--color-cream);
+  font-weight: 100;
+  font-size: large;
+}
+
+.nav-min {
+  grid-area: nav-min;
+}
+
+.nav-close {
+  grid-area: nav-close;
+}
+
+/* set the individual icons for each menu element 
+since i am not using svg path i have to update the svg files on hover
+if I am able to get the path i believe i can update using fill*/
+.nav-home svg,
+.nav-about svg,
+.nav-settings svg,
+.nav-min svg,
+.nav-close svg {
+  background-color: var(--color-dark);
+  stroke: var(--color-cream);
+  transition: stroke 250ms;
+}
+
+.nav-home:hover svg,
+.nav-about:hover svg,
+.nav-settings:hover svg,
+.nav-min:hover svg,
+.nav-close:hover svg {
+  stroke: var(--color-highlight);
+  transition: stroke 250ms;
+}
+
+/* organize menu within wrapper */
+.nav-wrapper {
+  grid-area: nav-wrapper;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 1fr 50px 50px;
+  grid-template-rows: 50px;
+  grid-template-areas: "nav-home nav-settings nav-about nav-drag nav-min nav-close";
+  position: sticky;
+  top: 0;
+}
+
+.spacer {
+  height: 20px;
+  width: 100%;
+}
+
+.interior-previous {
+  display: grid;
+  grid-area: interior-previous;
+  justify-content: center;
+  align-items: center;
+}
+.interior-next {
+  display: grid;
+  grid-area: interior-next;
+  justify-content: center;
+  align-items: center;
+  
+}
+.interior-previous svg,
+.interior-next svg  {
+  stroke: var(--color-dark);
+  padding: 5px;
+  border-radius: 25px;
+  transition: stroke 250ms;
+  box-shadow: 
+    inset 0 0 0 0        rgba(0, 0, 0, 0.3),
+        3px  3px  6px  0 rgba(0, 0, 0, 0.3);
+    /* inset 0 0 0 0        rgba(255, 255, 255, 0.2),
+    -3px -3px  6px 0 rgba(255, 255, 255, 0.5); */
+  /* transition: stroke, box-shadow 250ms; */
+}
+
+.interior-previous svg:hover,
+.interior-next svg:hover  {
+  cursor: pointer;
+  stroke: var(--color-highlight);
+  transition: stroke 250ms;
+  /* box-shadow: 
+    inset 3px  3px  6px 0        rgba(0, 0, 0, 0.3),
+          0 0 0 0 rgba(0, 0, 0, 0.3),
+    inset -3px -3px  6px 0 rgba(255, 255, 255, 0.5),
+          0 0 0 0        rgba(255, 255, 255, 0.2); */
+  /* transition: stroke, box-shadow 250ms;     */
+  
+}
+
+
+#p5-canvas {
+  display: grid;
+  grid-area: p5-canvas;
+  overflow: hidden;
+  border-radius: 10px;;
+  box-shadow: 
+    inset 0 0 0 0        rgba(0, 0, 0, 0.3),
+        3px  3px  6px  0 rgba(0, 0, 0, 0.3);
+    /* inset 0 0 0 0        rgba(255, 255, 255, 0.2),
+        -3px -3px  6px 0 rgba(255, 255, 255, 0.5); */
+
+}
+
+.p5-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 50px 1200px 50px 1fr;
+  grid-template-areas: ". interior-previous p5-canvas interior-next .";
+  gap: 5px;
+  /* border: 1px solid red; */
+
+}
+
+.interior-upload-icon{
+  grid-area: interior-upload-icon;
+  display: grid;
+  /* width: fit-content; */
+}
+.wrap-canvas-icon {
+  grid-area: wrap-canvas-icon;
+  display: grid;
+  /* width: fit-content; */
+}
+.save-frame-icon {
+  grid-area: save-frame-icon;
+  display: grid;
+  /* width: fit-content; */
+}
+.artwork-upload-icon {
+  grid-area: artwork-upload-icon;
+  display: grid;  
+  /* width: fit-content; */
+}
+.ui-text {
+  grid-area: ui-text;
+  display: grid;  
+}
+
+.artwork-upload-icon svg,
+.interior-upload-icon svg,
+.wrap-canvas-icon svg,
+.save-frame-icon svg  {
+  padding: 5px;
+  stroke: var(--color-dark);
+  transition: stroke 250ms;
+  border-radius: 10px;
+  box-shadow: 
+    inset 0 0 0 0        rgba(0, 0, 0, 0.3),
+        3px  3px  6px  0 rgba(0, 0, 0, 0.3),
+  inset 0 0 0 0        rgba(255, 255, 255, 0.2),
+        -3px -3px  6px 0 rgba(255, 255, 255, 0.5);
+  
+}
+
+.artwork-upload-icon:hover svg,
+.interior-upload-icon:hover svg,
+.wrap-canvas-icon:hover svg,
+.save-frame-icon:hover svg {
+  cursor: pointer;
+  stroke: var(--color-highlight);
+  transition: stroke 250ms;
+}
+
+.ui-wrapper {
+  display: grid;
+  grid-area: main-center;
+  grid-template-columns: 1fr 50px 50px 50px 50px 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-areas: ". artwork-upload-icon interior-upload-icon wrap-canvas-icon save-frame-icon ."
+                        "ui-text ui-text ui-text ui-text ui-text ui-text";
+  gap: .5em;
+  justify-items: center;
+}
+
+.center-wrapper {
+  display: grid;
+  grid-template-columns: 1fr var(--p5-width) 1fr;
+  grid-template-areas: ". main-center .";
+}
+
